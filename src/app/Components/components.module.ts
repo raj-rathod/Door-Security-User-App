@@ -8,6 +8,7 @@ import { MemberlistComponent } from './memberlist/memberlist.component';
 import { AddMemberComponent } from './add-member/add-member.component';
 import { NotificationListComponent } from './notification-list/notification-list.component';
 import { NotificationDetailComponent } from './notification-detail/notification-detail.component';
+import { MaterialModule } from '../Angular-Material/material.module';
 
 
 @NgModule({
@@ -19,6 +20,6 @@ import { NotificationDetailComponent } from './notification-detail/notification-
     NotificationListComponent,
     NotificationDetailComponent
   ],
-  imports: [CommonModule, ReactiveFormsModule, ComponentsRoutingModule]
+  imports: [CommonModule, ReactiveFormsModule, ComponentsRoutingModule, MaterialModule ]
 })
 export class ComponentsModule {}
