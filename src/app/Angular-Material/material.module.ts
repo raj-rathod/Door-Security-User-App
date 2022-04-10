@@ -11,12 +11,16 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
   imports: [
     CommonModule,
     MatToolbarModule,
+    MatIconModule,
+    MatInputModule,
     MatMenuModule,
     MatTableModule,
     MatRadioModule,
@@ -31,6 +35,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 exports: [
     MatToolbarModule,
     MatMenuModule,
+    MatIconModule,
+    MatInputModule,
     MatTableModule,
     MatRadioModule,
     MatSnackBarModule,

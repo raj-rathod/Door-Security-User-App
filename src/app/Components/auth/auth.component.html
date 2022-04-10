@@ -1,1 +1,99 @@
-<app-loader></app-loader>
+<div class="container padding">
+   <div class="auth-container">
+      <div class="login-card theme-background">
+        <div class="image-container">
+            <img src="assets/security.jpg" alt="Security">
+        </div>
+        <ng-container *ngIf="signOption">
+          <form class="example-form">
+            <mat-form-field class="example-full-width" appearance="legacy">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com" autocomplete="off">
+              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="legacy">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput [formControl]="password" autocomplete="off">
+                <mat-error *ngIf="password.hasError('required')">
+                  Password is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+           </form>
+            <button mat-raised-button color="primary" (click)="login()">Login</button>
+            <p class="mt-2 m-0">Don't have account ? <button mat-button color="primary" (click)="signUpOption()">Sign Up</button></p>
+        </ng-container>
+
+        <ng-container *ngIf="!signOption">
+          <form class="example-form">
+            <mat-form-field class="example-full-width" appearance="legacy">
+              <mat-label>Name</mat-label>
+              <input type="text" matInput [formControl]="name" placeholder="Ex. Peter" autocomplete="off">
+              <mat-error *ngIf="name.hasError('required')">
+                Name is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="legacy">
+              <mat-label>Address</mat-label>
+              <input type="text" matInput [formControl]="address" placeholder="Ex. x-31/9 delhi" autocomplete="off">
+              <mat-error *ngIf="address.hasError('required')">
+                Address is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="legacy">
+              <mat-label>Contact No</mat-label>
+              <input type="text" matInput [formControl]="contact" placeholder="Ex. pat@example.com" autocomplete="off">
+              
+              <mat-error *ngIf="contact.hasError('required')">
+                Contact No is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="legacy">
+              <div>
+                <mat-toolbar>
+                  <!-- Display files names -->
+                  <input matInput [(ngModel)]="fileAttr" readonly name="name" class="font-size" />
+                  <!-- Browse Button -->
+                  <button mat-flat-button color="primary">Browse File</button>
+                </mat-toolbar>
+                <!-- Fetch selected filed on change -->
+                <input
+                  type="file"
+                  #fileInput
+                  id="uploadFile"
+                  (change)="uploadFileEvt($event)"
+                  name="uploadFile"
+                  accept="image/*"
+                  capture
+                />
+              </div>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="legacy">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com" autocomplete="off">
+              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="legacy">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput [formControl]="password" autocomplete="off">
+                <mat-error *ngIf="password.hasError('required')">
+                  Password is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+           </form>
+            <button mat-raised-button color="primary">Sign Up</button>
+            <p class="mt-2 m-0">Already have account ? <button mat-button color="primary" (click)="signUpOption()">Sign in</button></p>
+        </ng-container>
+      
+      </div>
+   </div>
+</div>

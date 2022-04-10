@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsRoutingModule } from './components-routing.module';
 import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
@@ -10,6 +10,7 @@ import { NotificationListComponent } from './notification-list/notification-list
 import { NotificationDetailComponent } from './notification-detail/notification-detail.component';
 import { MaterialModule } from '../Angular-Material/material.module';
 import { LoaderComponent } from './loader/loader.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -20,8 +21,9 @@ import { LoaderComponent } from './loader/loader.component';
     AddMemberComponent,
     NotificationListComponent,
     NotificationDetailComponent,
-    LoaderComponent
+    LoaderComponent,
+    NavbarComponent
   ],
-  imports: [CommonModule, ReactiveFormsModule, ComponentsRoutingModule, MaterialModule]
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, ComponentsRoutingModule, MaterialModule]
 })
 export class ComponentsModule {}
