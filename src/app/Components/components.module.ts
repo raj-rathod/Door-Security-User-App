@@ -9,6 +9,7 @@ import { AddMemberComponent } from './add-member/add-member.component';
 import { NotificationListComponent } from './notification-list/notification-list.component';
 import { NotificationDetailComponent } from './notification-detail/notification-detail.component';
 import { MaterialModule } from '../Angular-Material/material.module';
+import { LoaderComponent } from './loader/loader.component';
 
 
 @NgModule({
@@ -18,8 +19,9 @@ import { MaterialModule } from '../Angular-Material/material.module';
     MemberlistComponent,
     AddMemberComponent,
     NotificationListComponent,
-    NotificationDetailComponent
+    NotificationDetailComponent,
+    LoaderComponent
   ],
-  imports: [CommonModule, ReactiveFormsModule, ComponentsRoutingModule, MaterialModule ]
+  imports: [CommonModule, ReactiveFormsModule, ComponentsRoutingModule, MaterialModule]
 })
 export class ComponentsModule {}
