@@ -47,10 +47,10 @@ body {
 }
 
 .container{
-    padding: 0 50px;
+    padding:50px;
 }
 @media (max-width:767px){
     .container{
-        padding: 0 10px;
+        padding:10px;
     }
 }

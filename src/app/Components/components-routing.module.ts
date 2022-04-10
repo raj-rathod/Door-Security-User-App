@@ -4,6 +4,7 @@ import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
 import { MemberlistComponent } from './memberlist/memberlist.component';
 import { NotificationDetailComponent } from './notification-detail/notification-detail.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -13,13 +14,18 @@ const routes: Routes = [
     path: 'validation', component: AuthComponent
   },
   {
-    path: 'home', component: HomeComponent
-  },
-  {
-    path: 'memberlist', component: MemberlistComponent
-  },
-  {
-    path: 'notification', component: NotificationDetailComponent
+    path: 'home', component: HomeComponent,
+    children:[
+      {
+        path: '', component: ProfileComponent
+      },
+      {
+        path: 'memberlist', component: MemberlistComponent
+      },
+      {
+        path: 'notification', component: NotificationDetailComponent
+      },
+    ]
   },
   {
     path: '**', component: AuthComponent

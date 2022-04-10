@@ -18,12 +18,12 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
 ];
 @Component({
-  selector: 'app-memberlist',
-  templateUrl: './memberlist.component.html',
-  styleUrls: ['./memberlist.component.css']
+  selector: 'app-visitor-history',
+  templateUrl: './visitor-history.component.html',
+  styleUrls: ['./visitor-history.component.css']
 })
-export class MemberlistComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'action'];
+export class VisitorHistoryComponent implements OnInit {
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'action'];
   dataSource = ELEMENT_DATA;
   date = new Date();
   constructor() { }
