@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+    <img class="img-icon tab" src="assets/security.jpg" alt="" routerLink="/home">
+    <span class="ml-3 font-size">Door Security System</span>
+    <span class="example-spacer"></span>
+    <button (click)="notificationList()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon matBadge="8" matBadgePosition="after" matBadgeColor="accent">notifications</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu" aria-label="Example icon-button with share icon">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>Redial</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>voicemail</mat-icon>
+          <span>Check voice mail</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>notifications_off</mat-icon>
+          <span>Disable alerts</span>
+        </button>
+      </mat-menu>
+  </mat-toolbar>

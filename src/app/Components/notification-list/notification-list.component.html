@@ -1,1 +1,12 @@
-<p>notification-list works!</p>
+<ng-container *ngFor="let i of [0,0,0,0,0,0,0,0,0,0,0,0]">
+    <div class="d-flex tab">
+        <div class="circle theme-background">
+            <span>UK</span>
+        </div>
+        <div class="flex-grow-1 ml-2">
+            <span>Rahul visit at {{date| date:'h:mm a'}}</span>
+            <p class="m-0">{{date|date}}</p>
+        </div>
+    </div>
+</ng-container>
+

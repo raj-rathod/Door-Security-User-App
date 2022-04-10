@@ -1,4 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+/* customize scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height:8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border: 1px solid #939AA9;
+    border-radius: 100px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #939AA9;;
+    border-radius: 100px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #939AA9;;
+}
+.theme-background{
+    background:rgb(0, 195, 255);
+}
+.mt-2{
+    margin-top:12px !important;
+}
+.m-0{
+    margin-bottom: 0px !important;
+}
+.ml-2{
+    margin-left: 12px;
+}
+.ml-3{
+    margin-left: 20px;
+}
+.tab{
+    cursor: pointer;
+}
+
+.container{
+    padding: 0 50px;
+}
+@media (max-width:767px){
+    .container{
+        padding: 0 10px;
+    }
+}

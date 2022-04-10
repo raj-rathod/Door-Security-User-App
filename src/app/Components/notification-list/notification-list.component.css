@@ -1,0 +1,21 @@
+.padding{
+    padding:0px 16px;
+}
+.d-flex{
+    display:flex;
+    align-items:center;
+    margin-bottom:18px;
+}
+.circle{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:12px;
+    color:white;
+    width: 40px;
+    height: 40px;
+    border-radius:20px;
+}
+.flex-grow-1{
+    flex: 1;
+}
