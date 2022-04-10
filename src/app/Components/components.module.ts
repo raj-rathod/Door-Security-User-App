@@ -11,6 +11,8 @@ import { NotificationDetailComponent } from './notification-detail/notification-
 import { MaterialModule } from '../Angular-Material/material.module';
 import { LoaderComponent } from './loader/loader.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ProfileComponent } from './profile/profile.component';
+import { VisitorHistoryComponent } from './visitor-history/visitor-history.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     NotificationListComponent,
     NotificationDetailComponent,
     LoaderComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProfileComponent,
+    VisitorHistoryComponent
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, ComponentsRoutingModule, MaterialModule]
 })

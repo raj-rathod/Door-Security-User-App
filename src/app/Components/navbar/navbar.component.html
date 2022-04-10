@@ -9,17 +9,21 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-          <mat-icon>dialpad</mat-icon>
-          <span>Redial</span>
+      <button mat-menu-item routerLink="/home">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </button>
+        <button mat-menu-item routerLink="/home/memberlist">
+          <mat-icon>view_list</mat-icon>
+          <span>Member List</span>
         </button>
-        <button mat-menu-item disabled>
-          <mat-icon>voicemail</mat-icon>
-          <span>Check voice mail</span>
+        <button mat-menu-item >
+          <mat-icon>person_add</mat-icon>
+          <span>Add Member</span>
         </button>
-        <button mat-menu-item>
-          <mat-icon>notifications_off</mat-icon>
-          <span>Disable alerts</span>
+        <button mat-menu-item routerLink="/">
+          <mat-icon>logout</mat-icon>
+          <span>Log Out</span>
         </button>
       </mat-menu>
   </mat-toolbar>

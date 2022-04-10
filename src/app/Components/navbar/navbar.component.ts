@@ -18,6 +18,7 @@ export class NavbarComponent implements OnInit {
   notificationList(): void {
     this.dialog.open(NotificationListComponent,{
      height:"70vh",
+     width:'300px',
      position:{ top:"65px", right:"0" }
     });
   }
