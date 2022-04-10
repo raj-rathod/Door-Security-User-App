@@ -1,1 +1,44 @@
-<p>add-member works!</p>
+<form class="example-form">
+    <mat-form-field class="example-full-width" appearance="legacy">
+      <mat-label>Name</mat-label>
+      <input type="text" matInput [formControl]="name" placeholder="Ex. Peter" autocomplete="off">
+      <mat-error *ngIf="name.hasError('required')">
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="legacy">
+      <mat-label>Relation</mat-label>
+      <input type="text" matInput [formControl]="relation" placeholder="Son" autocomplete="off">
+      <mat-error *ngIf="relation.hasError('required')">
+        Relation is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+   
+    <mat-form-field class="example-full-width" appearance="legacy">
+      <div>
+        <mat-toolbar>
+          <!-- Display files names -->
+          <input matInput [(ngModel)]="fileAttr" readonly name="name" class="font-size" />
+          <!-- Browse Button -->
+          <button mat-flat-button color="primary">Browse File</button>
+        </mat-toolbar>
+        <!-- Fetch selected filed on change -->
+        <input
+          type="file"
+          #fileInput
+          id="uploadFile"
+          (change)="uploadFileEvt($event)"
+          name="uploadFile"
+          accept="image/*"
+          capture
+        />
+      </div>
+    </mat-form-field>
+    
+    <mat-slide-toggle>Permission</mat-slide-toggle>
+   </form>
+   
+    <mat-dialog-actions [attr.align]="'end'">
+        <button mat-raised-button color="primary">Submit</button>
+        <button mat-button mat-dialog-close>Cancel</button>
+    </mat-dialog-actions>

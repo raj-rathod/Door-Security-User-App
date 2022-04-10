@@ -1,1 +1,18 @@
-<p>notification-detail works!</p>
+<div class="container">
+    <div class="d-flex">
+        <div>
+           <img class="image-container" src="assets/security.jpg" alt="">
+           <div class="mt-3">
+               <h2>Rahul Kumar</h2>
+               <p>Relation</p>
+               <p>{{date| date}}</p>
+               <p>{{date| date:'h:mm a'}}</p>
+
+               <mat-radio-group aria-label="Select an option" class="mt-3">
+                <mat-radio-button value="1">Open</mat-radio-button>
+                <mat-radio-button value="2" class="ml-2">Not Open</mat-radio-button>
+              </mat-radio-group>
+           </div>
+        </div>
+    </div>
+</div>
