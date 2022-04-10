@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-notification-list',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificationListComponent implements OnInit {
   date = new Date();
-  constructor() { }
+  constructor(
+    private router: Router,
+    private dialogRef: MatDialogRef<NotificationListComponent>
+  ) { }
 
   ngOnInit(): void {
   }
+
+  VisitorDetail(): void {
+    this.router.navigate(['/home/notification']);
+    this.dialogRef.close();
+ }
 
 }

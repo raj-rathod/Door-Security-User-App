@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -26,9 +27,13 @@ export class VisitorHistoryComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'action'];
   dataSource = ELEMENT_DATA;
   date = new Date();
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
   }
-
+  VisitorDetail(): void {
+     this.router.navigate(['/home/notification']);
+  }
 }
