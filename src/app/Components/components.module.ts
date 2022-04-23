@@ -13,6 +13,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { VisitorHistoryComponent } from './visitor-history/visitor-history.component';
+import { AlertComponent } from './alert/alert.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { VisitorHistoryComponent } from './visitor-history/visitor-history.compo
     LoaderComponent,
     NavbarComponent,
     ProfileComponent,
-    VisitorHistoryComponent
+    VisitorHistoryComponent,
+    AlertComponent
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, ComponentsRoutingModule, MaterialModule]
 })

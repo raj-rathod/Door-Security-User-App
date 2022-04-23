@@ -1,0 +1,17 @@
+<div class="notification-alert">
+    <div
+    class="float-right tab"
+    (click)="closeDialog()"
+  > 
+  <img src="assets/Cancel.svg" alt="">
+</div>
+  
+    <div [class]="alertType(this.type).class">
+        <div [class]="alertType(this.type).line">
+        </div>
+        <div class="px-3 py-2 d-flex">
+          <p class="m-0 ml-2 fw-600 font-family fs-medium">{{title}}</p>
+        </div>
+    </div>
+</div>
+  
