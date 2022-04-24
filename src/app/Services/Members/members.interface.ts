@@ -5,3 +5,11 @@ export interface Member{
     permissions: boolean;
     image: string;
 }
+
+export interface AddMember{
+    name: string;
+    userId: string;
+    relation: string;
+    permissions: boolean;
+    image: File
+}

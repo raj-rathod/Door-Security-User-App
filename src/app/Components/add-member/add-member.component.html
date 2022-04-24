@@ -35,10 +35,10 @@
       </div>
     </mat-form-field>
     
-    <mat-slide-toggle>Permission</mat-slide-toggle>
+    <mat-slide-toggle (change)="setPermission()" [checked]="permissions">Permission</mat-slide-toggle>
    </form>
    
     <mat-dialog-actions [attr.align]="'end'">
-        <button mat-raised-button color="primary">Submit</button>
+        <button mat-raised-button color="primary"(click)=" addMember()" >Submit</button>
         <button mat-button mat-dialog-close>Cancel</button>
     </mat-dialog-actions>
