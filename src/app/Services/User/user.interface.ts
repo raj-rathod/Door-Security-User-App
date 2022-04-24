@@ -7,3 +7,12 @@ export interface User{
     image: string;
     address: string;
 }
+
+export interface UserCreate{
+    name: string;
+    password: string;
+    email: string;
+    phone: string;
+    address: string;
+    image: File
+}

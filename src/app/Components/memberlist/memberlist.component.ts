@@ -1,34 +1,53 @@
-import { Component, OnInit } from '@angular/core';
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AlertService } from 'src/app/Services/Alert/alert.service';
+import { Member } from 'src/app/Services/Members/members.interface';
+import { MembersService } from 'src/app/Services/Members/members.service';
+import { SubSink } from 'subsink';
+
 @Component({
   selector: 'app-memberlist',
   templateUrl: './memberlist.component.html',
   styleUrls: ['./memberlist.component.css']
 })
-export class MemberlistComponent implements OnInit {
+export class MemberlistComponent implements OnInit, OnDestroy{
   displayedColumns: string[] = ['position', 'name', 'weight', 'action'];
-  dataSource = ELEMENT_DATA;
-  date = new Date();
-  constructor() { }
+  membersData: Member[] = [];
+  subsink = new SubSink();
+  constructor(
+    private membersService: MembersService,
+    private alertService: AlertService,
+  ) { }
 
   ngOnInit(): void {
+    this.subsink.add(
+      this.membersService.getMembers(localStorage.getItem('userId')).
+      subscribe((res)=>{
+        this.membersData = res;
+      })
+    )
+  }
+
+  permissionSet(permission: boolean, id: string) {
+    this.subsink.add(
+      this.membersService.updatePermission(id, !permission).
+      subscribe((res) => {
+          this.alertService.showSuccessAlert('Member Permissions updated successfully');
+      })
+    )
+  }
+
+  deleteMember(id: string){
+    this.subsink.add(
+      this.membersService.deleteMember(id)
+      .subscribe((res) => {
+        this.alertService.showWarningAlert('Member deleted successfully');
+        window.location.reload();
+      })
+    )
+  }
+
+  ngOnDestroy(): void {
+    this.subsink.unsubscribe();
   }
 
 }

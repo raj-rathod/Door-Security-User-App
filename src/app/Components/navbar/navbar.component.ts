@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Notifications } from 'src/app/Services/Notification/notification.interface';
 import { NotificationService } from 'src/app/Services/Notification/notification.service';
 import { SubSink } from 'subsink';
@@ -17,6 +18,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   count = 0;
   constructor(
     private dialog: MatDialog,
+    private router: Router,
     private notificationService: NotificationService
   ) { }
 
@@ -45,6 +47,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.dialog.open(AddMemberComponent,{
       disableClose: true,
     });
+  }
+
+  logout(): void {
+    localStorage.removeItem('userId');
+    this.router.navigate(['/']);
   }
 
   ngOnDestroy(): void {
