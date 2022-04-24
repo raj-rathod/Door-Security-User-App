@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import {
     HttpInterceptor,
     HttpRequest,
@@ -19,7 +18,7 @@ import { AlertService } from '../Services/Alert/alert.service';
         private alertService: AlertService
     ) {}
   
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     intercept(
       req: HttpRequest<unknown>,
       next: HttpHandler
@@ -27,11 +26,9 @@ import { AlertService } from '../Services/Alert/alert.service';
       let newHeaders = req.headers;
       
       const authReq = req.clone({headers: newHeaders});
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       return next.handle(authReq).pipe(catchError((x) => this.handleAuthError(x)));
     }
-  
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     private handleAuthError(err: HttpErrorResponse): Observable<any> {
       if (err?.error instanceof ErrorEvent) {
         this.alertService.showErrorAlert(err?.error?.message);
@@ -39,18 +36,21 @@ import { AlertService } from '../Services/Alert/alert.service';
         if (err?.error instanceof ProgressEvent) {
           this.alertService.showErrorAlert('Network Request failed');
         } else {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
           if (err?.error?.error?.details && err?.error?.error?.details.length > 0) {
             this.alertService.showErrorAlert(
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-              // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
               `${err?.error?.error?.details[0].path} ${err?.error?.error?.details[0].message}`
             );
           } else {
+           if(err.status === 404) {
             this.alertService.showErrorAlert(
-              // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+              `Not Found `
+            );
+           }else{
+            this.alertService.showErrorAlert(
               `${err?.error?.error?.message}`
             );
+           }
+            
         }
         }
       }
