@@ -9,9 +9,17 @@
                <p>{{notification?.date| date:'h:mm a'}}</p>
 
                <mat-radio-group aria-label="Select an option" class="mt-3">
-                <mat-radio-button [checked]="notification?.yourAction" value='true'>Open</mat-radio-button>
-                <mat-radio-button [checked]="!notification?.yourAction" value="false" class="ml-2">Not Open</mat-radio-button>
-              </mat-radio-group>
+                <mat-radio-button 
+                (change)="yourAction(notification?._id, true)"
+                [checked]="notification?.yourAction && notification?.isReaded" 
+                [disabled]="!notification?.yourAction && notification?.isReaded" >Open
+               </mat-radio-button>
+                <mat-radio-button 
+                (change)="yourAction(notification?._id, false)"
+                [checked]="!notification?.yourAction && notification?.isReaded"
+                [disabled]="notification?.yourAction && notification?.isReaded"
+                 class="ml-2">Not Open</mat-radio-button>
+               </mat-radio-group>
            </div>
         </div>
     </div>

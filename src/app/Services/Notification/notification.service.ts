@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Notifications } from './notification.interface';
+import { Notifications, NotificationUpdate } from './notification.interface';
 
 
 @Injectable({
@@ -25,4 +25,18 @@ export class NotificationService {
     `${this.apiUrl}notification/notification-detail?id=${id}`
     );
   }
+
+  updateNotification( notificationUpdate: NotificationUpdate):
+   Observable<Notifications>{
+    return this.http.patch<Notifications>(
+      `${this.apiUrl}notification`, notificationUpdate
+    );
+  }
+
+  deleteNotification(id: string): Observable<{}>{
+    return this.http.delete<{}>(
+      `${this.apiUrl}notification?id=${id}`
+    )
+  }
+
 }

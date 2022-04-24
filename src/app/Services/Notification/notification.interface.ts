@@ -6,3 +6,11 @@ export interface Notifications{
     yourAction: boolean;
     image: string
 }
+
+export interface NotificationUpdate{
+    id: string | undefined;
+    update:{
+        yourAction: boolean;
+        isReaded: boolean
+    }
+}

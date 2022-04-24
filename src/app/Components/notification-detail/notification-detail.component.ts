@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Notifications } from 'src/app/Services/Notification/notification.interface';
+import { AlertService } from 'src/app/Services/Alert/alert.service';
+import { Notifications, NotificationUpdate } from 'src/app/Services/Notification/notification.interface';
 import { NotificationService } from 'src/app/Services/Notification/notification.service';
 import { SubSink } from 'subsink';
 
@@ -14,6 +15,7 @@ export class NotificationDetailComponent implements OnInit {
   subsink = new SubSink();
   constructor(
     private route: ActivatedRoute,
+    private alertService: AlertService,
     private notificationService: NotificationService
   ) { }
 
@@ -32,6 +34,22 @@ export class NotificationDetailComponent implements OnInit {
         if(res){
           this.notification = res;
         }
+      })
+    );
+  }
+  yourAction(id: string| undefined, action :boolean): void {
+    const updateObj: NotificationUpdate = {
+        id: id,
+        update:{
+          yourAction: action,
+          isReaded: true,
+        }
+    }
+    this.subsink.add(
+      this.notificationService.updateNotification(updateObj)
+      .subscribe((res) => {
+         this.alertService.showSuccessAlert('Your action is submitted');
+         window.location.reload();
       })
     );
   }
