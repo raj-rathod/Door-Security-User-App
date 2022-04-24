@@ -3,7 +3,7 @@
     <span class="ml-3 font-size">Door Security System</span>
     <span class="example-spacer"></span>
     <button (click)="notificationList()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon matBadge="8" matBadgePosition="after" matBadgeColor="accent">notifications</mat-icon>
+      <mat-icon [matBadge]="count > 0 ? count: ''" matBadgePosition="after" matBadgeColor="accent">notifications</mat-icon>
     </button>
     <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu" aria-label="Example icon-button with share icon">
       <mat-icon>more_vert</mat-icon>
