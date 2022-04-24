@@ -1,23 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+import { Notifications } from 'src/app/Services/Notification/notification.interface';
+import { NotificationService } from 'src/app/Services/Notification/notification.service';
+import { SubSink } from 'subsink';
 @Component({
   selector: 'app-visitor-history',
   templateUrl: './visitor-history.component.html',
@@ -25,15 +10,23 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class VisitorHistoryComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'action'];
-  dataSource = ELEMENT_DATA;
   date = new Date();
+  subsink = new SubSink();
+  notificationData: Notifications[] = [];
   constructor(
     private router: Router,
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit(): void {
+    this.subsink.add(
+      this.notificationService.getNotifications(localStorage.getItem('userId'))
+      .subscribe((res) => {
+        this.notificationData  = res;
+      })
+    );
   }
-  VisitorDetail(): void {
-     this.router.navigate(['/home/notification']);
+  VisitorDetail(id: string): void {
+     this.router.navigate(['/home/notification'],{queryParams: {id:id}});
   }
 }

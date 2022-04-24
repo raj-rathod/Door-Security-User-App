@@ -1,12 +1,12 @@
 <div class="container">
     <div class="d-flex">
         <div>
-           <img class="image-container" src="assets/security.jpg" alt="">
+           <img class="image-container" [src]="user?.image" (error)="errorHandle($event)" alt="">
         </div>
         <div class="flex-grow-1 ml-3">
-           <h2>Rahul Kumar</h2>
-           <p>address</p>
-           <p>contact us</p>
+           <h2>{{user?.name}}</h2>
+           <p>{{user?.address}}</p>
+           <p>{{user?.phone}}</p>
         </div>
     </div>
     <app-visitor-history></app-visitor-history>

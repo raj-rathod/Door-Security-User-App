@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AlertService } from './Services/Alert/alert.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class AppComponent implements OnInit {
   
   constructor(
     private alertService: AlertService,
+    private router: Router
   ){
 
   }
@@ -24,6 +26,9 @@ export class AppComponent implements OnInit {
       this.alertService.showSuccessAlert("Connection Restored..");
       window.location.reload();
     });
+    if(localStorage.getItem('userId')){
+      this.router.navigate(['/home']);
+    }
   }
 
 

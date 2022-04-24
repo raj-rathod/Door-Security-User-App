@@ -14,9 +14,14 @@ export class UserService {
   ) { 
   }
 
-  getuser(username: string, password: string):Observable<User>{
+  getUserLogin(username: string, password: string): Observable<User>{
     return this.http.get<User>(
-      `${this.apiUrl}user?username=${username}&password=${password}`
+      `${this.apiUrl}user/login?username=${username}&password=${password}`
+    );
+  }
+  getUser(userId: string | null): Observable<User>{
+    return this.http.get<User>(
+    `${this.apiUrl}user?id=${userId}`
     );
   }
 }

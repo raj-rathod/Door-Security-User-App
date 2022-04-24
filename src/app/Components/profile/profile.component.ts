@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertService } from 'src/app/Services/Alert/alert.service';
+import { User } from 'src/app/Services/User/user.interface';
+import { UserService } from 'src/app/Services/User/user.service';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-profile',
@@ -7,13 +9,22 @@ import { AlertService } from 'src/app/Services/Alert/alert.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
+  user: User| undefined;
+  subsink = new SubSink();
   constructor(
-    private alertService: AlertService
+     private userService: UserService,
   ) { }
 
   ngOnInit(): void {
-    this.alertService.showSuccessAlert("hello world");
+    this.subsink.add(
+      this.userService.getUser(localStorage.getItem('userId'))
+      .subscribe((res) => {
+        this.user = res;
+      })
+    );
+  }
+  errorHandle(event: any): void{
+    event.target.src = 'assets/security.jpg';
   }
 
 }

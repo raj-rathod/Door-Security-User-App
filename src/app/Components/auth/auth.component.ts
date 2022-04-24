@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SubSink } from 'subsink';
+import { UserService } from 'src/app/Services/User/user.service';
 
 @Component({
   selector: 'app-auth',
@@ -11,6 +13,7 @@ export class AuthComponent implements OnInit {
   @ViewChild('fileInput')
   fileInput!: ElementRef;
   signOption = true;
+  subsink = new SubSink();
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
   name = new FormControl('', [Validators.required]);
@@ -20,6 +23,7 @@ export class AuthComponent implements OnInit {
   
   constructor(
     private router: Router,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -54,7 +58,15 @@ export class AuthComponent implements OnInit {
   }
 
   login(): void {
-    this.router.navigate(['/home'])
+    if(this.emailFormControl.valid && this.password.valid) {
+        this.userService.getUserLogin(this.emailFormControl.value, this.password.value)
+        .subscribe((res)=>{
+          localStorage.setItem('userId', res._id);
+          this.router.navigate(['/home']);
+        });
+    }else{
+      return;
+    }
   }
 
 }
